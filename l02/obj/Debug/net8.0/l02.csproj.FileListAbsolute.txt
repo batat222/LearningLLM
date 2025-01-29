@@ -1,0 +1,14 @@
+D:\пары\JustFun\LearningLLM\l02\bin\Debug\net8.0\l02.exe
+D:\пары\JustFun\LearningLLM\l02\bin\Debug\net8.0\l02.deps.json
+D:\пары\JustFun\LearningLLM\l02\bin\Debug\net8.0\l02.runtimeconfig.json
+D:\пары\JustFun\LearningLLM\l02\bin\Debug\net8.0\l02.dll
+D:\пары\JustFun\LearningLLM\l02\bin\Debug\net8.0\l02.pdb
+D:\пары\JustFun\LearningLLM\l02\obj\Debug\net8.0\l02.GeneratedMSBuildEditorConfig.editorconfig
+D:\пары\JustFun\LearningLLM\l02\obj\Debug\net8.0\l02.AssemblyInfoInputs.cache
+D:\пары\JustFun\LearningLLM\l02\obj\Debug\net8.0\l02.AssemblyInfo.cs
+D:\пары\JustFun\LearningLLM\l02\obj\Debug\net8.0\l02.csproj.CoreCompileInputs.cache
+D:\пары\JustFun\LearningLLM\l02\obj\Debug\net8.0\l02.dll
+D:\пары\JustFun\LearningLLM\l02\obj\Debug\net8.0\refint\l02.dll
+D:\пары\JustFun\LearningLLM\l02\obj\Debug\net8.0\l02.pdb
+D:\пары\JustFun\LearningLLM\l02\obj\Debug\net8.0\l02.genruntimeconfig.cache
+D:\пары\JustFun\LearningLLM\l02\obj\Debug\net8.0\ref\l02.dll

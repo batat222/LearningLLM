@@ -1,0 +1,4 @@
+D:\пары\JustFun\LearningLLM\l01\obj\Debug\net8.0\l01.GeneratedMSBuildEditorConfig.editorconfig
+D:\пары\JustFun\LearningLLM\l01\obj\Debug\net8.0\l01.AssemblyInfoInputs.cache
+D:\пары\JustFun\LearningLLM\l01\obj\Debug\net8.0\l01.AssemblyInfo.cs
+D:\пары\JustFun\LearningLLM\l01\obj\Debug\net8.0\l01.csproj.CoreCompileInputs.cache

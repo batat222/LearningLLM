@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "//uBLLUUil8=",
+  "dgSpecHash": "q96yLcpfmr0=",
   "success": true,
-  "projectFilePath": "D:\\пары\\JustFun\\LearningLLM\\l02\\l02.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/batat/AILearning/LLM/l02/l02.csproj",
+  "expectedPackageFiles": [
+    "/home/batat/.nuget/packages/microsoft.netcore.app.ref/8.0.12/microsoft.netcore.app.ref.8.0.12.nupkg.sha512",
+    "/home/batat/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.12/microsoft.aspnetcore.app.ref.8.0.12.nupkg.sha512",
+    "/home/batat/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.12/microsoft.netcore.app.host.linux-x64.8.0.12.nupkg.sha512"
+  ],
   "logs": []
 }

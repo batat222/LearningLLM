@@ -30,110 +30,77 @@ public class SimpleNGramModel
         }
     }
 
-    public void Analize(string input)
+    public void AnalizeWithLogs(string input)
+{
+    Preprocessor preprocessor = new Preprocessor();
+    string[] tokens = preprocessor.Execute(input);
+
+    Console.WriteLine("Starting analysis with logs...");
+    Console.WriteLine("--------------------------------");
+
+    int totalTokens = tokens.Length;
+    int processedTokens = 0;
+    var stopwatch = System.Diagnostics.Stopwatch.StartNew(); // Start a timer
+
+    for (int i = 0; i < tokens.Length; i++)
     {
-        Preprocessor preprocessor = new Preprocessor();
-        string[] tokens = preprocessor.Execute(input);
+        string word = tokens[i];
+        processedTokens++;
 
-        for (int i = 0; i < tokens.Length - 2; i++)
+        // Unigrams
+        if (!Unigrams.ContainsKey(word))
         {
-            string context = $"{tokens[i]} {tokens[i + 1]}";
-            string nextWord = tokens[i + 2];
-
-            if (!Trigrams.ContainsKey(context))
-            {
-                Trigrams[context] = new Dictionary<string, int>();
-            }
-
-            if (!Trigrams[context].ContainsKey(nextWord))
-            {
-                Trigrams[context][nextWord] = 0;
-            }
-
-            Trigrams[context][nextWord]++;
-
+            Unigrams[word] = 0;
         }
+        Unigrams[word]++;
 
-        for (int i = 0; i < tokens.Length - 1; i++)
+        // Bigrams
+        if (i < tokens.Length - 1)
         {
             string word1 = tokens[i];
             string word2 = tokens[i + 1];
-
             if (!Bigrams.ContainsKey(word1))
             {
                 Bigrams[word1] = new Dictionary<string, int>();
             }
-
             if (!Bigrams[word1].ContainsKey(word2))
             {
                 Bigrams[word1][word2] = 0;
             }
-
             Bigrams[word1][word2]++;
         }
 
-        for (int i = 0; i < tokens.Length; i++)
+        // Trigrams
+        if (i < tokens.Length - 2)
         {
-            string word = tokens[i];
-            if (!Unigrams.ContainsKey(word))
+            string context = $"{tokens[i]} {tokens[i + 1]}";
+            string nextWord = tokens[i + 2];
+            if (!Trigrams.ContainsKey(context))
             {
-                Unigrams[word] = 0;
+                Trigrams[context] = new Dictionary<string, int>();
             }
-            Unigrams[word]++;
+            if (!Trigrams[context].ContainsKey(nextWord))
+            {
+                Trigrams[context][nextWord] = 0;
+            }
+            Trigrams[context][nextWord]++;
+        }
+        if (processedTokens % 100 == 0 || processedTokens == totalTokens)
+        {
+            Console.Clear();
+            Console.WriteLine($"Processed {processedTokens}/{totalTokens} tokens...");
+            Console.WriteLine($"Time elapsed: {stopwatch.Elapsed.TotalSeconds:F2} seconds");
+            Console.WriteLine($"Unigrams: {Unigrams.Count}");
+            Console.WriteLine($"Bigrams: {Bigrams.Count}");
+            Console.WriteLine($"Trigrams: {Trigrams.Count}");
+            Console.WriteLine("--------------------------------");
         }
     }
 
-    public void AnalizeWithLogs(string input)
-    {
-        Preprocessor preprocessor = new Preprocessor();
-        string[] tokens = preprocessor.Execute(input);
-
-        for (int i = 0; i < tokens.Length; i++)
-        {
-            // Unigrams
-            string word = tokens[i];
-            if (!Unigrams.ContainsKey(word))
-            {
-                Unigrams[word] = 0;
-            }
-            Unigrams[word]++;
-            Console.WriteLine($"{word} = {Unigrams[word]}");
-
-            // Bigrams
-            if (i < tokens.Length - 1)
-            {
-                string word1 = tokens[i];
-                string word2 = tokens[i + 1];
-                if (!Bigrams.ContainsKey(word1))
-                {
-                    Bigrams[word1] = new Dictionary<string, int>();
-                }
-                if (!Bigrams[word1].ContainsKey(word2))
-                {
-                    Bigrams[word1][word2] = 0;
-                }
-                Bigrams[word1][word2]++;
-                Console.WriteLine($"{word1} {word2} = {Bigrams[word1][word2]}");
-            }
-
-            // Trigrams
-            if (i < tokens.Length - 2)
-            {
-                string context = $"{tokens[i]} {tokens[i + 1]}";
-                string nextWord = tokens[i + 2];
-                if (!Trigrams.ContainsKey(context))
-                {
-                    Trigrams[context] = new Dictionary<string, int>();
-                }
-                if (!Trigrams[context].ContainsKey(nextWord))
-                {
-                    Trigrams[context][nextWord] = 0;
-                }
-                Trigrams[context][nextWord]++;
-                Console.WriteLine($"{context} {nextWord} = {Trigrams[context][nextWord]}");
-            }
-        }
-    }
+    stopwatch.Stop();
+    Console.WriteLine("Analysis with logs completed.");
+    Console.WriteLine($"Total time: {stopwatch.Elapsed.TotalSeconds:F2} seconds");
+}
 
     public void Learn()
     {
